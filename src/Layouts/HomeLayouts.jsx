@@ -1,7 +1,18 @@
+import LeftSidebar from "../components/LeftSidebar";
+import RightSidebar from "../components/RightSidebar";
+
 const HomeLayouts = () => {
     return (
-        <div>
-            <h1>home layouts</h1>
+        <div className="grid grid-cols-12 mt-14 w-10/12 mx-auto">
+            <div className="col-span-3">
+                <LeftSidebar></LeftSidebar>
+            </div>
+            <div className="col-span-6">
+                 <h1 className="font-semibold text-xl">Dragon News Home</h1>
+            </div>
+            <div className="col-span-3">
+                 <RightSidebar></RightSidebar>
+            </div>
         </div>
     );
 };

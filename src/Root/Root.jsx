@@ -3,7 +3,7 @@ import HomeLayouts from "../Layouts/HomeLayouts";
 
 const Root = () => {
     return (
-        <div>
+        <div className="font-poppins">
             <Header></Header>
             <HomeLayouts></HomeLayouts>
         </div>
