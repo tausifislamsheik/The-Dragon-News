@@ -30,7 +30,10 @@ const router = createBrowserRouter([
                 const res = await fetch(
                   `https://openapi.programming-hero.com/api/news/category/${params.id}`
                 );
-                return res.json(); // 👈 this makes useLoaderData() return parsed data
+                if (!res.ok) {
+                throw new Response("Failed to load news", { status: res.status });
+              }
+                return res.json();
               }
           }
         ]

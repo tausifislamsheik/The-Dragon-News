@@ -9,13 +9,12 @@ const NewsCard = ({ news }) => {
     total_view,
     details,
     image_url,
-    
   } = news;
 
   return (
-    <div className="card bg-base-100 shadow-xl border rounded-2xl">
+    <div className="card bg-base-100 border border-gray-300 rounded-2xl">
       {/* Author Info */}
-      <div className="flex items-center justify-between px-4 py-3 border-b">
+      <div className="flex items-center justify-between px-4 py-3 border-b border-b-gray-300">
         <div className="flex items-center gap-3">
           <img
             src={author.img}
@@ -55,7 +54,7 @@ const NewsCard = ({ news }) => {
       </div>
 
       {/* Footer */}
-      <div className="flex items-center justify-between px-4 py-3 border-t mt-2">
+      <div className="flex items-center justify-between px-4 py-3 border-t border-t-gray-300 mt-2">
         <div className="flex items-center text-orange-500">
           {[...Array(5)].map((_, i) => (
             <AiFillStar key={i} className="text-lg" />

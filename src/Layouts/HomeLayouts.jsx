@@ -1,5 +1,5 @@
+import { Outlet } from "react-router-dom";
 import LeftSidebar from "../components/LeftSidebar";
-import NewsHome from "../components/NewsHome";
 import RightSidebar from "../components/RightSidebar";
 
 const HomeLayouts = () => {
@@ -9,7 +9,7 @@ const HomeLayouts = () => {
                 <LeftSidebar></LeftSidebar>
             </div>
             <div className="col-span-6">
-                 <NewsHome></NewsHome>
+                 <Outlet></Outlet>
             </div>
             <div className="col-span-3">
                  <RightSidebar></RightSidebar>
