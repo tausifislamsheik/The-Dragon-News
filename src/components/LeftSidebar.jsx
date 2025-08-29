@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Sidebar, Menu, MenuItem } from 'react-pro-sidebar';
+import { NavLink } from 'react-router-dom';
 
 const LeftSidebar = () => {
 
@@ -17,7 +18,11 @@ const LeftSidebar = () => {
             <Sidebar>
                 <Menu>
                     {
-                        categories.map(category => <MenuItem>{category.category_name}</MenuItem>)
+                        categories.map(category => 
+                            <NavLink to={`/category/${category.category_id}`}>
+                                <MenuItem key={category.category_id}>{category.category_name}</MenuItem>
+                            </NavLink>
+                        )
                     }
                 </Menu>
             </Sidebar>

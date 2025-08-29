@@ -1,4 +1,5 @@
 import LeftSidebar from "../components/LeftSidebar";
+import NewsHome from "../components/NewsHome";
 import RightSidebar from "../components/RightSidebar";
 
 const HomeLayouts = () => {
@@ -8,7 +9,7 @@ const HomeLayouts = () => {
                 <LeftSidebar></LeftSidebar>
             </div>
             <div className="col-span-6">
-                 <h1 className="font-semibold text-xl">Dragon News Home</h1>
+                 <NewsHome></NewsHome>
             </div>
             <div className="col-span-3">
                  <RightSidebar></RightSidebar>
