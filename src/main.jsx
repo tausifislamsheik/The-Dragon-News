@@ -9,6 +9,9 @@ import {
 import Root from './Root/Root';
 import HomeLayouts from './Layouts/HomeLayouts';
 import NewsHome from './components/NewsHome';
+import AuthLayout from './Layouts/AuthLayout';
+import Login from './components/Login';
+import Register from './components/Register';
 
 const router = createBrowserRouter([
   {
@@ -35,6 +38,20 @@ const router = createBrowserRouter([
               }
                 return res.json();
               }
+          }
+        ]
+      },
+      {
+        path:'/auth',
+        element:<AuthLayout></AuthLayout>,
+        children:[
+          {
+            path:'/auth/login',
+            element:<Login></Login>
+          },
+          {
+            path:'/auth/register',
+            element:<Register></Register>
           }
         ]
       }

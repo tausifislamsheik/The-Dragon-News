@@ -1,7 +1,6 @@
 import moment from 'moment';
 import logo from '../assets/logo.png'
 import Marquee from 'react-fast-marquee';
-import Navbar from './Navbar';
 
 const Header = () => {
     return (
@@ -17,7 +16,6 @@ const Header = () => {
                     </Marquee>
                 </div>
             </div>
-            <Navbar></Navbar>
         </div>
     );
 };
