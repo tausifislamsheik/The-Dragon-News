@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
 
     const {loginUser} = useContext(AuthContext)
+    const [error, setError] = useState('')
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -22,7 +23,9 @@ const Login = () => {
             console.log(result)
             navigate(location?.state ? location?.state : '/')
          })
-         .catch(error => console.log(error.message))
+         .catch(err => {
+            setError({ ...error, login:err.code})
+         })
     }
     return (
             <div className="min-h-screen w-10/12 mx-auto">
@@ -36,6 +39,11 @@ const Login = () => {
                         <input type="email" name="email" className="input w-full bg-gray-100 border-none" placeholder="Enter your email address" />
                         <label className="label text-lg font-semibold">Password</label>
                         <input type="password" name="password" className="input w-full bg-gray-100 border-none" placeholder="Enter your password" />
+                        
+                            {
+                                error.login && <p className="text-red-500 text-center">Invalid email or password</p>
+                            }
+                        
                         <div><a className="link link-hover text-gray-500">Forgot password?</a></div>
                         <button className="btn btn-neutral mt-4">Login</button>
                         </fieldset>

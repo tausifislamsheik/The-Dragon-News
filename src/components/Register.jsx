@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
 
     const {createUser} = useContext(AuthContext);
+    const [error,setError] = useState({})
 
     const handleSubmit = (e) =>{
          e.preventDefault();
@@ -14,7 +15,9 @@ const Register = () => {
          const photo = form.get('photo')
          const email = form.get('email')
          const password = form.get('password')
-
+         if(password.length < 8){
+            setError({ ...error, password:'password must be 8 character or longer'})
+         }
          console.log({name,photo,email,password})
 
          createUser(email, password)
@@ -39,6 +42,9 @@ const Register = () => {
                         <input type="email" name="email" className="input w-full bg-gray-100 border-none" placeholder="Enter your email address" />
                         <label className="label text-lg font-semibold">Password</label>
                         <input type="password" name="password" className="input w-full bg-gray-100 border-none" placeholder="Enter your password" />
+                        {
+                            error.password && <p className="text-red-500 text-center">{error.password}</p>
+                        }
                         <p className="text-gray-500 text-sm"><input type="checkbox" className="checkbox checkbox-sm" /> Accept <span className="font-semibold">Terms & Conditions</span></p>
                         <button className="btn btn-neutral mt-3">Register</button>
                         </fieldset>
