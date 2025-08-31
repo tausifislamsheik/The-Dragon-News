@@ -23,16 +23,19 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className='flex gap-2'>
-                <img className='object-cover w-10 h-10 rounded-full' src={userIcon} alt="" />
-                
                 {
-                    user && user?.email ? (<div>
-                    <p className='items-center pb-2 font-semibold'>{user.email}</p>
-                    <button onClick={handleSignOut} className="btn btn-neutral px-6">Log-Out</button>
-                    </div>) : (<Link to='/auth/login' className="btn btn-neutral px-6">Login</Link>)
+                    user && user?.email ? <>
+                        <img className='w-12 h-12 rounded-full' src={user?.photoURL} alt="" />
+                        <div>
+                            <p className='font-semibold'>{user?.displayName}</p>
+                            <p className='text-sm text-gray-400'>{user?.email}</p>
+                            <button onClick={handleSignOut} className="btn bg-red-600 text-white px-6">Log-Out</button>
+                        </div>
+                    </> : <>
+                    <img className='object-cover w-10 h-10 rounded-full' src={userIcon} alt="" />
+                    <Link to='/auth/login' className="btn btn-neutral px-6">Login</Link>
+                    </>
                 }
-                
-                
             </div>
         </div>
     );

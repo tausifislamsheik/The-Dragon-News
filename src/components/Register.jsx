@@ -1,11 +1,13 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Register = () => {
 
-    const {createUser} = useContext(AuthContext);
+    const {createUser,userProfileUpdate} = useContext(AuthContext);
     const [error,setError] = useState({})
+    const navigate = useNavigate();
+    const location = useLocation()
 
     const handleSubmit = (e) =>{
          e.preventDefault();
@@ -23,6 +25,10 @@ const Register = () => {
          createUser(email, password)
          .then(result =>{
             console.log(result)
+            navigate(location?.state ? location?.state : '/')
+            userProfileUpdate({displayName:name, photoURL:photo})
+            .then(()=> navigate('/'))
+            .catch(error => console.log(error))
          })
          .catch(error => console.log(error.message))
     }
