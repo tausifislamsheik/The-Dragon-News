@@ -20,7 +20,6 @@ const Register = () => {
          if(password.length < 8){
             setError({ ...error, password:'password must be 8 character or longer'})
          }
-         console.log({name,photo,email,password})
 
          createUser(email, password)
          .then(result =>{

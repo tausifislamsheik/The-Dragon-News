@@ -14,9 +14,7 @@ const Login = () => {
 
         const form = new FormData(e.target)
         const email = form.get('email')
-         const password = form.get('password')
-         
-         console.log({email,password})
+        const password = form.get('password')
 
          loginUser(email, password)
          .then(result =>{

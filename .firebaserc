@@ -1,0 +1,9 @@
+{
+  "projects": {
+    "default": "fir-demo-project-17dde",
+    "clear": "fir-demo-project-17dde",
+    "firebase use --add the-dragon-news-366c4 prod": "the-dragon-news-366c4"
+  },
+  "targets": {},
+  "etags": {}
+}
