@@ -5,10 +5,16 @@ import { AuthContext } from '../Provider/AuthProvider';
 
 const Navbar = () => {
 
-    const {name} = useContext(AuthContext)
+    const {user, signOutUser} = useContext(AuthContext)
+
+    const handleSignOut = () =>{
+        signOutUser()
+        .then(() => console.log('Sign out user successfully'))
+        .catch(error => console.log('ERROR',error.message))
+    }
     return (
         <div className='flex items-center justify-between w-10/12 mx-auto'>
-            <div>{name}</div>
+            <div></div>
             <div>
                 <ul className="flex gap-3 text-gray-400 text-lg font-semibold">
                    <Link>Home</Link>
@@ -17,10 +23,16 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className='flex gap-2'>
-                <img src={userIcon} alt="" />
-                <Link to='/auth/login'>
-                <button className="btn btn-neutral px-6">Login</button>
-                </Link>
+                <img className='object-cover w-10 h-10 rounded-full' src={userIcon} alt="" />
+                
+                {
+                    user && user?.email ? (<div>
+                    <p className='items-center pb-2 font-semibold'>{user.email}</p>
+                    <button onClick={handleSignOut} className="btn btn-neutral px-6">Log-Out</button>
+                    </div>) : (<Link to='/auth/login' className="btn btn-neutral px-6">Login</Link>)
+                }
+                
+                
             </div>
         </div>
     );
