@@ -3,6 +3,7 @@ import LeftSidebar from "../components/LeftSidebar";
 import RightSidebar from "../components/RightSidebar";
 import Header from "../components/Header";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const HomeLayouts = () => {
     return (
@@ -20,6 +21,7 @@ const HomeLayouts = () => {
                         <RightSidebar></RightSidebar>
                     </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };

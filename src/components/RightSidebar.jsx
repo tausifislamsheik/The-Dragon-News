@@ -1,7 +1,6 @@
 import swimmingImg from '../assets/swimming.png'
 import classImg from '../assets/class.png'
 import playgroundImg from '../assets/playground.png' 
-import bgImg from '../assets/bg.png'
 
 const RightSidebar = () => {
     return (
@@ -38,9 +37,6 @@ const RightSidebar = () => {
                 <img src={swimmingImg} alt="" />
                 <img src={classImg} alt="" />
                 <img src={playgroundImg} alt="" />
-            </div>
-            <div>
-                <img className='w-96' src={bgImg} alt="" />
             </div>
         </div>
     );

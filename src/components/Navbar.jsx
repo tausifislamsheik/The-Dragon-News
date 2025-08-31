@@ -13,7 +13,7 @@ const Navbar = () => {
         .catch(error => console.log('ERROR',error.message))
     }
     return (
-        <div className='flex items-center justify-between w-10/12 mx-auto'>
+        <div className='md:flex items-center justify-between w-10/12 mx-auto'>
             <div></div>
             <div>
                 <ul className="flex gap-3 text-gray-400 text-lg font-semibold">
