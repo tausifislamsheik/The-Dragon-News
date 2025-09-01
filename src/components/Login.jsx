@@ -1,11 +1,12 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
 
-    const {loginUser} = useContext(AuthContext)
+    const {loginUser, forgetPassword} = useContext(AuthContext)
     const [error, setError] = useState('')
+    const emailRef = useRef();
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -25,6 +26,20 @@ const Login = () => {
             setError({ ...error, login:err.code})
          })
     }
+
+    const handleResetPassword = () =>{
+        console.log(emailRef.current.value)
+        const email = emailRef.current.value;
+        if(!email){
+           alert('Please provide a valid email') 
+        }else{
+            forgetPassword(email)
+            .then(result =>{
+             alert('Sent email for reset password, Check your email',result)
+            })
+            .catch(error => console.log(error.message))
+        }
+    }
     return (
             <div className="min-h-screen w-10/12 mx-auto">
                 <div className="hero-content">
@@ -34,7 +49,7 @@ const Login = () => {
                     <form onSubmit={handleSubmit}>
                         <fieldset className="fieldset space-y-2">
                         <label className="label text-lg font-semibold">Email</label>
-                        <input type="email" name="email" className="input w-full bg-gray-100 border-none" placeholder="Enter your email address" />
+                        <input type="email" ref={emailRef} name="email" className="input w-full bg-gray-100 border-none" placeholder="Enter your email address" />
                         <label className="label text-lg font-semibold">Password</label>
                         <input type="password" name="password" className="input w-full bg-gray-100 border-none" placeholder="Enter your password" />
                         
@@ -42,7 +57,7 @@ const Login = () => {
                                 error.login && <p className="text-red-500 text-center">Invalid email or password</p>
                             }
                         
-                        <div><a className="link link-hover text-gray-500">Forgot password?</a></div>
+                        <div><a onClick={handleResetPassword} className="link link-hover text-gray-500">Forgot password?</a></div>
                         <button className="btn btn-neutral mt-4">Login</button>
                         </fieldset>
                     </form>
