@@ -17,8 +17,16 @@ const Register = () => {
          const photo = form.get('photo')
          const email = form.get('email')
          const password = form.get('password')
+         const terms = form.get('terms')
+
          if(password.length < 8){
-            setError({ ...error, password:'password must be 8 character or longer'})
+            setError({ ...error, password:'password must be 8 characters or longer'})
+            return;
+         }
+
+         if(!terms){
+            setError({ ...error, terms:'Please accept our terms & conditions'})
+            return;
          }
 
          createUser(email, password)
@@ -50,7 +58,10 @@ const Register = () => {
                         {
                             error.password && <p className="text-red-500 text-center">{error.password}</p>
                         }
-                        <p className="text-gray-500 text-sm"><input type="checkbox" className="checkbox checkbox-sm" /> Accept <span className="font-semibold">Terms & Conditions</span></p>
+                        <p className="text-gray-500 text-sm"><input type="checkbox" name="terms" className="checkbox checkbox-sm" /> Accept <span className="font-semibold">Terms & Conditions</span></p>
+                        {
+                            error.terms && <p className="text-red-500 text-center">{error.terms}</p>
+                        }
                         <button className="btn btn-neutral mt-3">Register</button>
                         </fieldset>
                     </form>
