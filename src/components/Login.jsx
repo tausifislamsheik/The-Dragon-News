@@ -1,11 +1,14 @@
 import { useContext, useRef, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import { IoEye } from "react-icons/io5";
+import { IoMdEyeOff } from "react-icons/io";
 
 const Login = () => {
 
     const {loginUser, forgetPassword} = useContext(AuthContext)
     const [error, setError] = useState('')
+    const [showPassword, setShowPassword] = useState(false)
     const emailRef = useRef();
     const location = useLocation();
     const navigate = useNavigate();
@@ -28,7 +31,6 @@ const Login = () => {
     }
 
     const handleResetPassword = () =>{
-        console.log(emailRef.current.value)
         const email = emailRef.current.value;
         if(!email){
            alert('Please provide a valid email') 
@@ -50,8 +52,15 @@ const Login = () => {
                         <fieldset className="fieldset space-y-2">
                         <label className="label text-lg font-semibold">Email</label>
                         <input type="email" ref={emailRef} name="email" className="input w-full bg-gray-100 border-none" placeholder="Enter your email address" />
-                        <label className="label text-lg font-semibold">Password</label>
-                        <input type="password" name="password" className="input w-full bg-gray-100 border-none" placeholder="Enter your password" />
+                        <div className="relative">
+                            <label className="label text-lg font-semibold">Password</label>
+                            <input type={showPassword ? 'text' : 'password'} name="password" className="input w-full bg-gray-100 border-none" placeholder="Enter your password" />
+                             <button onClick={() => setShowPassword(!showPassword)} className="text-xl absolute right-5 top-9">
+                              {
+                                showPassword ? <IoMdEyeOff /> : <IoEye />
+                              }
+                             </button>
+                        </div>
                         
                             {
                                 error.login && <p className="text-red-500 text-center">Invalid email or password</p>
